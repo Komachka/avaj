@@ -2,5 +2,5 @@
 find src -name '*.java' > sources.txt
 javac @sources.txt
 java src.lunch.Main scenario.txt
-cat -e simulation.txt
+#cat -e simulation.txt
 

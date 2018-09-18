@@ -2,10 +2,11 @@ package src.lunch;
 
 import src.aircrafts.AircraftFactory;
 import src.aircrafts.Flyable;
-import src.excaptions.WeatherExcaptions;
+import src.excaptions.*;
+import java.text.ParseException;
 import src.weather.WeatherTower;
-//import src.lunch.Writter;
-
+import java.lang.NullPointerException;
+import java.lang.NumberFormatException;
 import java.io.*;
 
 class Main{
@@ -14,62 +15,74 @@ class Main{
 
         final String FILENAME = "scenario.txt";
         final String OUTPUTFILE_NAME = "simulation.txt";
-        
-        if(args.length != 1)
-        {
-            System.err.println("Invalid input");
-            System.exit(0);
-        }
-        if (!args[0].toLowerCase().equals(FILENAME)) {
-            System.err.println("Invalid input");
-            System.exit(0);
-        }
-
-        for(int i = 0; i < args.length; i++)
-        {
-            System.out.println("i " + i+ " = " + args[i]);
-        }
-
         int times;
         BufferedReader br = null;
         Writter writter = null;
         String line;
+
+        
         try {
-            br = new BufferedReader(new FileReader(FILENAME));
-            writter = new Writter(OUTPUTFILE_NAME);
+                if(args.length != 1){
+                    throw new InputDataExcaption("The input argument is not equals 1");
+                } 
+                if (!args[0].toLowerCase().equals(FILENAME)) {
+                    throw new InputDataExcaption("The input file name is not " + FILENAME);
+                }
 
-            AircraftFactory aircraftFactory = new AircraftFactory();
-            WeatherTower wt = new WeatherTower();
+                br = new BufferedReader(new FileReader(FILENAME));
+                writter = new Writter(OUTPUTFILE_NAME);
 
-            times = Integer.parseInt(br.readLine());
-            while ((line = br.readLine()) != null)
-            {
-                String []inputParams = line.split(" ");
-                Flyable flyable = aircraftFactory.newAircraft(inputParams[0], inputParams[1], Integer.parseInt(inputParams[2]), Integer.parseInt(inputParams[3]), Integer.parseInt(inputParams[4]));
-                flyable.registerTower(wt);
+                AircraftFactory aircraftFactory = new AircraftFactory();
+                WeatherTower wt = new WeatherTower();
+                times = Integer.parseInt(br.readLine()); 
+                while ((line = br.readLine()) != null)
+                {
+                    String []inputParams = line.split(" +");
+                    if (inputParams.length != 5)
+                        throw new WeatherExcaptions("Input parameters in 1 line more than have to");
+                    Flyable flyable = aircraftFactory.newAircraft(inputParams[0], inputParams[1], Integer.parseInt(inputParams[2]), Integer.parseInt(inputParams[3]), Integer.parseInt(inputParams[4]));
+                    flyable.registerTower(wt);
 
-            }
-            wt.simulateWeatherChanges(times);
+                }
+                wt.simulateWeatherChanges(times);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } 
+        catch (NumberFormatException e)
+        {
+            System.out.println("There is some error \n" + e.toString());
+        }
+
+        catch (FileNotFoundException e) {
+            System.out.println("There is some error \n" + e.toString()); 
+        }   
+        catch (UnsupportedEncodingException e) {
+            System.out.println("There is some error \n" + e.toString());
         } 
-        catch (WeatherExcaptions weatherExcaptions) {
-            weatherExcaptions.printStackTrace();
+        catch (IOException e) {
+            System.out.println("There is some error \n" + e.toString());
         } 
+        catch (WeatherExcaptions e) {
+            System.out.println("There is some error \n" + e.toString());
+        } 
+        catch (InputDataExcaption e) {
+            System.out.println("There is some error \n" + e.toString());
+        }
+        catch (java.lang.Exception e)
+        {
+            System.out.println("There is some error \n" + e.toString());   
+        }
         finally {
 
             try {
                 br.close();
                 writter.close();
             } catch (IOException e) {
-                e.printStackTrace();
+            } catch (NullPointerException e)
+            {
+                //System.out.println(e.toString());
             }
         }
+
 
     }
 }

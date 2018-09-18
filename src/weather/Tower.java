@@ -37,9 +37,7 @@ public class Tower {
 
 
     protected void conditionsChanged() throws WeatherExcaptions {
-        System.out.println("observers.size()" + observers.size());
-        Flyable tmp;
-
+        
         for (int i = 0; i <observers.size() ; i++) {
             observers.get(i).updateConditions();
         }

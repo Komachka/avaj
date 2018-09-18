@@ -4,7 +4,7 @@ package src.aircrafts;
 import src.excaptions.WeatherExcaptions;
 
 public class AircraftFactory {
-    public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height)
+    public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws WeatherExcaptions
     {
         switch (type.toLowerCase().trim())
         {
@@ -15,8 +15,7 @@ public class AircraftFactory {
             case "helicopter" :
                 return new Helicopter(name, new Coordinates(longitude, latitude, height));
             default:
-                new WeatherExcaptions("There is not correct type");
-                return null;
+                throw new WeatherExcaptions("There is incorect input type");
         }
     }
 
