@@ -6,7 +6,7 @@ import src.weather.WeatherTower;
 
 public class Helicopter extends Aircaft implements Flyable{
     private WeatherTower weatherTower;
-    public Helicopter(String name, Coordinates coordinates) {
+    Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 
@@ -46,4 +46,3 @@ public class Helicopter extends Aircaft implements Flyable{
         weatherTower.register(this);
     }
 }
-

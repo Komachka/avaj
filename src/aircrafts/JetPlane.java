@@ -8,7 +8,7 @@ public class JetPlane extends Aircaft implements Flyable {
 
     private WeatherTower weatherTower;
 
-    public JetPlane(String name, Coordinates coordinates) {
+    JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 

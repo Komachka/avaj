@@ -8,7 +8,7 @@ import src.weather.WeatherTower;
 public class Baloon extends Aircaft implements Flyable {
 
     private WeatherTower weatherTower;
-    public Baloon(String name, Coordinates coordinates) {
+    Baloon(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 

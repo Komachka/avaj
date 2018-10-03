@@ -9,7 +9,7 @@ public class Coordinates {
     static final int MIN = 0;
 
 
-    public Coordinates(int longitude, int latitude, int height) {
+    Coordinates(int longitude, int latitude, int height) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.height = height;
