@@ -16,14 +16,13 @@ public class Writter {
         if(writer == null) {
             file = new File(fileName);
             file.createNewFile();
-            writer = new PrintWriter(file); 
+            writer = new PrintWriter(file);
         }
     }
 
     public static void printLine(String line)
     {
         writer.println(line);
-        //System.out.println(line);
     }
 
     public static void close()

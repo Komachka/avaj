@@ -4,7 +4,7 @@ package src.aircrafts;
 import src.excaptions.WeatherExcaptions;
 import src.weather.WeatherTower;
 
-public class Helicopter extends Aircaft implements Flyable{
+public class Helicopter extends Aircraft implements Flyable{
     private WeatherTower weatherTower;
     Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);

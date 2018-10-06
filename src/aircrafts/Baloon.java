@@ -5,7 +5,7 @@ import src.excaptions.WeatherExcaptions;
 import src.lunch.Writter;
 import src.weather.WeatherTower;
 
-public class Baloon extends Aircaft implements Flyable {
+public class Baloon extends Aircraft implements Flyable {
 
     private WeatherTower weatherTower;
     Baloon(String name, Coordinates coordinates) {

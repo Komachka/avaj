@@ -4,7 +4,7 @@ package src.aircrafts;
 import src.excaptions.WeatherExcaptions;
 import src.weather.WeatherTower;
 
-public class JetPlane extends Aircaft implements Flyable {
+public class JetPlane extends Aircraft implements Flyable {
 
     private WeatherTower weatherTower;
 
