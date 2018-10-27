@@ -7,4 +7,9 @@ In this project was implemented patterns such as Fabric and Observer.
 
 ![uml](https://github.com/Komachka/avaj/blob/master/avaj_uml.jpg)
 
+## Authors
+
+* **Storozh Kateryna** - [linkedin](https://www.linkedin.com/in/zhovta1kateryna/)
+
+
 
